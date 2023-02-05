@@ -1,13 +1,13 @@
 .Container{
   
-    width:85%;
+    width:92%;
     align-content: center;
     margin-left:auto;
     margin-right:auto;
     display:flex;
     flex-direction: column;
     justify-content: flex-start;
-    height:100vh;
+   
     font-family:sans-serif;
 }
 .yourgames{
@@ -32,4 +32,65 @@
         color:white;
         font-weight:bold;
         margin-top:10vh;    
+}
+
+.loading{
+    margin-top:5vh;
+    text-align: center;
+    position: fixed;
+    margin-left:35vw;
+    margin-top:35vh;
+}
+.Details{
+    width: 100%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius:7px;
+    margin-top:15px;
+    font-family:sans-serif;
+    line-height:1.2;
+}
+.gamewith{
+    font-weight:600;
+    font-size:25px;
+
+    padding:15px 15px;
+}
+.move{
+    padding:0 15px;
+}
+.yourmove{
+    padding:0 15px;
+}
+.timezone{
+    padding:15px 17px 17px ;
+    font-size:14px;
+    font-weight:500;
+}
+.button{
+    width:100%;
+    padding:5px 0 15px 0;
+}
+.button>button{
+    width:90%;
+    height:45px;
+    margin-left:5%;
+   
+}
+.last{
+    width:100%;
+    display: block;
+    padding: 0.5rem 1.2rem;
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2px;display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+.last>button{
+    width:40%;
+    height:50px;
+    color:white;
+    font-weight:bold;
 }

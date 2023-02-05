@@ -27,7 +27,7 @@ export default function Login(){
         return ;
        }
        try{
-        const response = await axios.post('http://localhost:8080/login', user);
+        const response = await axios.post('https://drab-waders-ray.cyclic.app/login', user);
           console.log(response.data);
           setPop({...pop,res:true});
           

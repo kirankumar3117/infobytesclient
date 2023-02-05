@@ -34,7 +34,7 @@ export default function Signup(){
         return ;
        }
         try {
-            const response = await axios.post('http://localhost:8080/register', user);
+            const response = await axios.post('https://drab-waders-ray.cyclic.app/register', user);
             
             console.log(response)
             setPop({...pop,res:true});

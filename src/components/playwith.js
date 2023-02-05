@@ -112,24 +112,41 @@ export default function Playwith(){
 
         console.log(all)
 
-        
+        //creating a new game from the creater
+
+        const creategame = await axios.post(
+            "https://drab-waders-ray.cyclic.app/creategame",{
+                creater:userdata._id,
+                responser:response.data._id,
+                userid1:userdata._id,
+                userid2:response.data._id,
+                gamearray:[["","",""],["","",""],["","",""]],
+                gamestate:true
+            }
+          );
+
+        //   console.log("creategame",creategame.data._id)
 
 
           const games={
             "game":`Game with ${userdata.name}`,
             "content":`${userdata.name} just made their move!`,
             "move":"It's your turn to play now.",
-            "timezone":`${day}th ${all.month} ${year}. ${all.hours}`
+            "timezone":`${day}th ${all.month} ${year}. ${all.hours}`,
+            "creater":`${userdata._id}`,
+            "responser":`${response.data._id}`,
+            "gameid":`${creategame.data._id}`,
+            "gamestatus":null
           }
           console.log(games);
           const patchres = await axios
-          .patch(`http://localhost:8080/update/gamerequest/${response.data._id}`,{
+          .patch(`https://drab-waders-ray.cyclic.app/update/gamerequest/${response.data._id}`,{
             alert:games
           });
 
           
 
-
+           navigate(`/infobytes/game/${creategame.data._id}`);
 
         //   if(response.data.play==true){
         //     setPop({...pop,inplay:true});

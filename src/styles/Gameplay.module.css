@@ -1,0 +1,25 @@
+.Container{
+  
+    width:85%;
+    align-content: center;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height:100vh;
+}
+.Back{
+    color:black;
+    font-weight:bold;
+    margin-top:18px;
+    margin-left:-13px;
+ 
+ }
+ .Back>button{
+     border:none;
+     background-color:transparent;
+ }
+ .Back>button>svg{
+     font-weight:bold;
+ }

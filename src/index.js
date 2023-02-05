@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Media from 'react-media';
-import {BrowserRouter} from "react-router-dom"
+import {BrowserRouter} from "react-router-dom";
+import {Provider} from "react-redux"
+import { store } from './store/store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode >
@@ -13,9 +15,12 @@ root.render(
         <Media query={{ maxWidth: 599 }}>
           {matches =>
             matches ? (
-              <BrowserRouter>
+              <Provider store={store}>
+                <BrowserRouter>
                <App/>
               </BrowserRouter>
+              </Provider>
+              
              
             ) : (
               <h2 style={{textAlign:"center"}}>Page ristricted on large screens.</h2>
