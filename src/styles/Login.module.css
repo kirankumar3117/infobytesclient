@@ -1,0 +1,87 @@
+.Container{
+  
+    width:85%;
+    align-content: center;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height:100vh;
+}
+.Login{
+    width:100%;
+    display: block;
+    padding: 0.5rem 1.2rem;
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2px;display: flex;
+}
+.Login>button{
+    width:100%;
+    height:50px;
+    color:white;
+    font-weight:bold;
+}
+.Back{
+   color:black;
+   font-weight:bold;
+   margin-top:18px;
+   margin-left:-13px;
+
+}
+.Back>button{
+    border:none;
+    background-color:transparent;
+}
+.Back>button>svg{
+    font-weight:bold;
+}
+.topcontent{
+    font-weight:bold;
+    padding:25px 2px 0;
+
+}
+.contentDetails{
+    font-size:32px;
+    font-weight:bold;
+    font-family: sans-serif;
+    word-spacing: -2px;
+    margin-top:-9px;
+    letter-spacing: -1px;
+    line-height: 1;
+    width:80%;
+}
+.form>lable{
+    font-weight:bold;
+}
+.form>input{
+    margin-top: 10px;
+    margin-bottom:10px;
+    height:50px;
+    background-color: rgb(245, 245, 245);
+    border:none;
+    font-weight: 500;
+    color:rgb(207, 207, 207);
+}
+.poperror{
+    width:100%;
+    display: block;
+    padding: 0.5rem 1.2rem;
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 70px;display: flex;
+    transition-timing-function: ease-in;
+    transition: 0.2s;
+   
+}
+.poperror>button{
+    width:100%;
+    height:50px;
+    color:white;
+    font-weight:bold;
+}
