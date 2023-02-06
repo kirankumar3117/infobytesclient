@@ -16,3 +16,7 @@
 <h2>Live Demo</h2>
 
 <a href="https://infobytesclient.vercel.app/">https://infobytesclient.vercel.app/</a>
+
+# access the backend code 
+
+<a>https://github.com/kirankumar3117/infobytes_backend</a>
