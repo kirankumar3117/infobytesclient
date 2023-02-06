@@ -80,7 +80,7 @@ export default  function Allgames(){
                     {e.gamestatus ?<div className={styled.timezone}>{e.gamestatus}</div> : null}
                     <div className={styled.timezone}>{e.timezone}</div>
                     <div className={styled.button}>
-                    <button type="button" className="btn btn-warning" >{e.move ? "play!" : "view"}</button>
+                    <button type="button" className="btn btn-warning" onClick={()=>  navigate(`/infobytes/game/${e.gameid}`)}>{e.move ? "play!" : "view"}</button>
 
                     </div>
                 </div>
