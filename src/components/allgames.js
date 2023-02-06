@@ -2,54 +2,41 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "../styles/Allgames.module.css"
-
+import { useSelector,useDispatch } from 'react-redux'
+import { get_all_games } from "../store/gameplay.action";
 
 export default  function Allgames(){
-    const [games,setGames]=useState([]);
-    const [alert,setAlert]=useState({});
-    const [notification,setNotification]=useState([]);
-    const [newdata,setNewdata]=useState([]);
     const navigate=useNavigate();
-    const [userid,setUserid]=useState(null);
     const [loading,setLoading]=useState(false);
+    const {userallgames}=useSelector((state)=>state.getgamedata);
+    const dispatch=useDispatch();
     useEffect(()=>{
-        setGames([])
         let user=localStorage.getItem("infobyteuser");
         user=JSON.parse(user)
         if(!user){
             navigate("/main")
         }
 
-        async function getuser(user){
-            setGames([]);
-            const {data}=await axios.get(`https://drab-waders-ray.cyclic.app/user/${user}`);
-            console.log(data.alert)
-           
-            if(data.notification){
-                data.notification.map((e)=>{
-                    return setGames([e,...games])
-                })
-            }
-             if(data.alert){
-                setGames([data.alert,...games])
-            }
+        
+        dispatch(get_all_games(user));
+
+
+        function start(){
+
+            setTimeout(()=>{
+                dispatch(get_all_games(user));
+                start()
+            },5000)
+
         }
 
-
-
-        getuser(user)
-
-       
-
-        console.log(games)
-        
+        start()
     },[])
-   
-    useEffect(()=>{
 
+    useEffect(()=>{
+        console.log("allgames",userallgames)
         let user=localStorage.getItem("infobyteuser");
         user=JSON.parse(user)
-        setUserid(user)
         if(!user){
             navigate("/main")
         }
@@ -57,18 +44,11 @@ export default  function Allgames(){
         setLoading(true);
         setTimeout(()=>{
             setLoading(false)
-        },3000)
-
-
-
-       
-
-
-
-        
-        
-        
+        },3000)   
     },[])
+    const handle=()=>{
+        console.log(userallgames)
+    }
     return(
         
         <div className={styled.Container}>
@@ -79,19 +59,19 @@ export default  function Allgames(){
 
           
 
-                {games.length==0 ? <div className={styled.notfound}>
+                {userallgames.length==0 ? <div className={styled.notfound}>
                
                <div>No Games Found</div>
                <button type="button" class="btn btn-warning" onClick={()=>navigate("/playwith")}>Start a new game</button>
            
 
 
-            </div> : 
+            </div> : null }
             
             
-            //displaying  all the games found
+            {/* //displaying  all the games found */}
             <div >
-                {games.map((e)=>{
+                {userallgames.map((e)=>{
                     return <div className={styled.Details}>
                     <div className={styled.gamewith}>{e.game}</div>
                     <div className={styled.move}>{e.content}</div>
@@ -111,7 +91,8 @@ export default  function Allgames(){
             
             
             
-            }
+            
+           
 
             {loading ? <div class="text-center" className={styled.loading}>
             <div class="spinner-border" style={{width: "3rem", height: "3rem"}} role="status">
@@ -120,7 +101,7 @@ export default  function Allgames(){
             </div> : null}
 
     
-            {games.length!=0 ? <div className={styled.last}>
+            {userallgames.length!=0 ? <div className={styled.last}>
             <button type="button" class="btn btn-info" onClick={()=> navigate("/playwith")}>+ New Game</button>
             </div>: null}
 
