@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import {  useNavigate, useParams } from "react-router-dom"
 import styled from "../styles/Gameplay.module.css"
 import { useSelector,useDispatch } from 'react-redux'
-import { get_game_data, get_myuser_data } from "../store/gameplay.action";
+import { get_game_data, get_myuser_data, get_other_user } from "../store/gameplay.action";
+import {GiAnarchy} from "react-icons/gi"
 export default function Gameplay(){
 
 const navigate=useNavigate()
@@ -14,7 +15,7 @@ const {id}=useParams();
 const [data,setData]=useState(null);
 const [newdata,newsetData]=useState(null);
 const {gamedata}=useSelector((state)=>state.getgamedata);
-   
+const {myuser,otheruser}=useSelector((state)=>state.getgamedata)
    const dispatch=useDispatch()
     useEffect(()=>{
        
@@ -23,18 +24,25 @@ const {gamedata}=useSelector((state)=>state.getgamedata);
          if(!user){
             navigate("/main")
         }
-        console.log("user",user)
+        
+
         function start(){
             setTimeout(()=>{
                 dispatch(get_game_data(id));
                 dispatch(get_myuser_data(user));
+                if( gamedata.userid1==user){
+                   dispatch(get_other_user(gamedata.userid2));
+                }else {
+                     dispatch(get_other_user(gamedata.userid1));
+                }
                 start()
+                // console.log("gamedata",gamedata)
+                console.log(otheruser)
             },3000)
         }
 
  
        start();
-        console.log(gamedata)
         
      },[])
 
@@ -49,12 +57,23 @@ const {gamedata}=useSelector((state)=>state.getgamedata);
                     </svg>
                 </button>
             </div>
+                   <div className={styled.username}>Game with {otheruser.name}</div>
+           
+                   <div>
+                    <div>Your piece</div>
+                    <div><GiAnarchy color="blue" size="30"/></div>
+                   </div>
 
+                    <div>content</div>
+                    <div>
+                        for boxes
+                    </div>
+                    
+          
 
-
-
-            <div>
-                    {gamedata.userid1}
+            {/* submit button */}
+            <div className={styled.lastbutton}>
+                        <button type="button" class="btn btn-warning" >submit</button>
             </div>
         </div>
     )

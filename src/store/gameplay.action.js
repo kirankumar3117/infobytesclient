@@ -1,4 +1,4 @@
-import { GAME_DATA, GET_ALL_GAMES, MY_USER } from "./gameplay.type";
+import { GAME_DATA, GET_ALL_GAMES, GET_OTHER_USER, MY_USER } from "./gameplay.type";
 
 import axios from "axios";
 
@@ -20,6 +20,12 @@ export const get_myuser_data=(value)=>(dispatch)=>{
   
 }
 
+export const get_other_user=(value)=>(dispatch)=>{
+    axios.get(`https://drab-waders-ray.cyclic.app/user/${value}`).then((res)=>{
+        dispatch({type:GET_OTHER_USER,payload:res.data});
+    })
+}
+
 
 export const get_all_games=(value)=>(dispatch)=>{
     let data=[];
@@ -32,7 +38,7 @@ export const get_all_games=(value)=>(dispatch)=>{
         if(res.data.alert){
             data=[res.data.alert,...data]
         }
-        console.log(data)
+        // console.log(data)
         dispatch({type:GET_ALL_GAMES,payload:data})
     })
 }

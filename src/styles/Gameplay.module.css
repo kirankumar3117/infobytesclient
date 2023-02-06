@@ -1,6 +1,6 @@
 .Container{
   
-    width:85%;
+    width:85vw;
     align-content: center;
     margin-left:auto;
     margin-right:auto;
@@ -8,6 +8,7 @@
     flex-direction: column;
     justify-content: flex-start;
     height:100vh;
+    font-family:sans-serif;
 }
 .Back{
     color:black;
@@ -23,3 +24,24 @@
  .Back>button>svg{
      font-weight:bold;
  }
+ .username{
+    font-weight:bold;
+    font-size:25px;
+    margin-top:15px;
+ }
+ .lastbutton{
+    width:100%;
+    display: block;
+    padding: 0.5rem 1.2rem;
+    z-index: 2;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 15px;display: flex;
+}
+.lastbutton>button{
+    width:100%;
+    height:50px;
+    color:white;
+    font-weight:bold;
+}
