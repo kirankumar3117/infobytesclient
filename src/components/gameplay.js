@@ -17,8 +17,12 @@ const {gamedata}=useSelector((state)=>state.getgamedata);
    
    const dispatch=useDispatch()
     useEffect(()=>{
+       
         let user=localStorage.getItem("infobyteuser");
         user=JSON.parse(user);
+         if(!user){
+            navigate("/main")
+        }
         console.log("user",user)
         function start(){
             setTimeout(()=>{
@@ -30,7 +34,8 @@ const {gamedata}=useSelector((state)=>state.getgamedata);
 
  
        start();
-        // console.log(data)
+        console.log(gamedata)
+        
      },[])
 
     return (
